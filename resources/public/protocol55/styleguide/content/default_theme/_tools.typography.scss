@@ -1,0 +1,262 @@
+///*----------------------------------*\
+//  #TYPOGRAPHY TOOLS
+//\*----------------------------------*/
+
+// Typography
+//
+// Mixins for typography. These are responsive and depend on _tools.reponsive.scss.
+//
+// Styleguide Tools.Typography
+
+// t-psg-prevent-empty()
+//
+// Prevents an empty element from collapsing its line-height.
+//
+// Compatible in browsers that support CSS3 selectors.
+//
+// Styleguide Tools.Typography.Prevent_Empty
+
+@mixin t-psg-prevent-empty {
+  &:empty::before {
+    content: "\200b";
+  }
+}
+
+// t-psg-single-line()
+//
+// Forces text on a single line, adding ellipsis if it overflows.
+//
+// Compatible in all browsers.
+//
+// Styleguide Tools.Typography.Single_Line
+
+@mixin t-psg-single-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// t-psg-heading-text()
+//
+// Responsive text style for headings.
+//
+// Compatible in all browsers.
+//
+// Styleguide Tools.Typography.Heading_Text
+
+@mixin t-psg-heading-text {
+  font-family: $psg-font-family;
+  line-height: $psg-title-line-height;
+  font-weight: $psg-light-font-weight;
+  color: $psg-text-color;
+
+  @include t-psg-lock(
+    $psg-title-font-size,
+    $psg-heading-font-size,
+    $psg-phone-breakpoint-width,
+    $psg-small-breakpoint-width,
+    font-size
+  );
+}
+
+// t-psg-heading-block()
+//
+// Responsive block style for headings.
+//
+// Compatible in all browsers.
+//
+// Styleguide Tools.Typography.Heading_Block
+
+@mixin t-psg-heading-block {
+  @include t-psg-heading-text;
+  @include t-psg-heading-rule;
+  @include t-psg-block-spacing(margin-bottom);
+  @include t-psg-single-line;
+
+  display: block;
+  margin-top: 0;
+}
+
+// t-psg-title-text()
+//
+// Responsive text style for titles.
+//
+// Compatible in all browsers.
+//
+// Styleguide Tools.Typography.Title_Text
+
+@mixin t-psg-title-text {
+  font-family: $psg-font-family;
+  line-height: $psg-title-line-height;
+  font-weight: $psg-book-font-weight;
+  color: $psg-text-color;
+
+  @include t-psg-lock(
+    $psg-intro-font-size,
+    $psg-title-font-size,
+    $psg-phone-breakpoint-width,
+    $psg-small-breakpoint-width,
+    font-size
+  );
+}
+
+// t-psg-title-block()
+//
+// Responsive block style for titles.
+//
+// Compatible in all browsers.
+//
+// Styleguide Tools.Typography.Title_Block
+
+@mixin t-psg-title-block {
+  @include t-psg-title-text;
+  @include t-psg-heading-rule;
+  @include t-psg-block-margin-y;
+  @include t-psg-single-line;
+  display: block;
+}
+
+// t-psg-subtitle-text($font-weight, $font-size)
+//
+// Responsive text style for subtitles.
+//
+// $font-weight=$psg-bold-font-weight - adjusts the weight
+// $font-size=$psg-subtitle-font-size - adjusts the size
+//
+// Compatible in all browsers.
+//
+// Styleguide Tools.Typography.Subtitle_Text
+
+@mixin t-psg-subtitle-text(
+  $font-weight: $psg-bold-font-weight,
+  $font-size: $psg-subtitle-font-size
+) {
+  font-family: $psg-font-family;
+  line-height: $psg-title-line-height;
+  font-weight: $psg-bold-font-weight;
+  color: $psg-text-color;
+  letter-spacing: $psg-loose-letter-spacing;
+  text-transform: uppercase;
+
+  @include t-psg-lock(
+    $psg-subtext-font-size,
+    $font-size,
+    $psg-phone-breakpoint-width,
+    $psg-small-breakpoint-width,
+    font-size
+  );
+}
+
+// t-psg-subtitle-block()
+//
+// Responsive block style for subtitles.
+//
+// Compatible in all browsers.
+//
+// Styleguide Tools.Typography.Subtitle_Block
+
+@mixin t-psg-subtitle-block {
+  @include t-psg-subtitle-text;
+  @include t-psg-block-margin-y;
+  display: block;
+}
+
+// t-psg-intro-text()
+//
+// Responsive text style for intro paragraphs.
+//
+// Compatible in all browsers.
+//
+// Styleguide Tools.Typography.Intro_Text
+
+@mixin t-psg-intro-text {
+  font-family: $psg-font-family;
+  line-height: $psg-body-line-height;
+  font-weight: $psg-book-font-weight;
+  color: $psg-text-color;
+
+  @include t-psg-lock(
+    $psg-body-font-size,
+    $psg-intro-font-size,
+    $psg-phone-breakpoint-width,
+    $psg-small-breakpoint-width,
+    font-size
+  );
+}
+
+// t-psg-intro-block()
+//
+// Responsive block style for intro paragraphs.
+//
+// Compatible in all browsers.
+//
+// Styleguide Tools.Typography.Intro_Block
+
+@mixin t-psg-intro-block {
+  @include t-psg-intro-text;
+  @include t-psg-block-margin-y;
+  display: block;
+}
+
+// t-psg-body-text()
+//
+// Responsive text style for paragraphs.
+//
+// Compatible in all browsers.
+//
+// Styleguide Tools.Typography.Body_Text
+
+@mixin t-psg-body-text {
+  font-family: $psg-font-family;
+  font-size: $psg-body-font-size;
+  line-height: $psg-body-line-height;
+  font-weight: $psg-book-font-weight;
+  color: $psg-text-color;
+}
+
+// t-psg-body-block()
+//
+// Responsive block style for paragraphs.
+//
+// Compatible in all browsers.
+//
+// Styleguide Tools.Typography.Body_Block
+
+@mixin t-psg-body-block {
+  @include t-psg-body-text;
+  @include t-psg-block-margin-y;
+  display: block;
+}
+
+// t-psg-code-text()
+//
+// Responsive text style for monospaced code.
+//
+// Compatible in all browsers.
+//
+// Styleguide Tools.Typography.Code_Text
+
+@mixin t-psg-code-text {
+  font-family: Consolas, Monaco, monospace;
+  background: $psg-code-sample-bkg-color;
+}
+
+// t-psg-code-block()
+//
+// Responsive block style for monospaced code.
+//
+// Compatible in all browsers. Will be a solid color if gradients are not supported.
+//
+// Styleguide Tools.Typography.Code_Block
+
+@mixin t-psg-code-block {
+  @include t-psg-code-text;
+  @include t-psg-comfy-padding;
+  font-size: .75em;
+  display: block;
+  overflow-x: auto;
+  line-height: 1.5;
+  background-size: auto 3em;
+  background-origin: content-box;
+  background-image: linear-gradient(rgba(0,0,0,0.03) 50%, transparent 0);
+}

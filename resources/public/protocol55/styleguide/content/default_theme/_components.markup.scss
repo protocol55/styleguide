@@ -1,0 +1,40 @@
+///*----------------------------------*\
+//  #MARKUP COMPONENT
+//\*----------------------------------*/
+
+// Markup
+//
+// Expandable panel to display KSS documentation markup.
+//
+// markup:
+//  <details class="c-psg-markup">
+//    <summary>Markup</summary>
+//    <pre><code>hello world!</code></pre>
+//  </details>
+//
+// Styleguide Components.Markup
+
+.c-psg-markup {
+  border: 1px solid $psg-secondary-bkg-color;
+  cursor: pointer;
+  background-color: $psg-secondary-bkg-color;
+  display: block;
+  padding: 0;
+
+  > summary {
+    @include t-psg-subtitle-text;
+    padding: $psg-spacing-1;
+    background-color: white;
+    user-select: none;
+    display: block;
+  }
+
+  > pre {
+    overflow: auto;
+    margin: 0;
+  }
+
+  > pre code {
+    @include t-psg-code-block;
+  }
+}

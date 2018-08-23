@@ -1,0 +1,13 @@
+///*----------------------------------*\
+//  #RESPONSIVE SETTINGS
+//\*----------------------------------*/
+
+$psg-phone-breakpoint-width:  320px  !default;
+$psg-small-breakpoint-width:  640px  !default;
+$psg-medium-breakpoint-width: 960px  !default;
+$psg-large-breakpoint-width:  1224px !default;
+
+$psg-phone-breakpoint: '(min-width: #{$psg-phone-breakpoint-width})' !default;
+$psg-small-breakpoint: '(min-width: #{$psg-small-breakpoint-width})' !default;
+$psg-medium-breakpoint: '(min-width: #{$psg-medium-breakpoint-width})' !default;
+$psg-large-breakpoint: '(min-width: #{$psg-large-breakpoint-width})' !default;

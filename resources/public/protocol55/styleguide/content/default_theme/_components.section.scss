@@ -1,0 +1,61 @@
+///*----------------------------------*\
+//  #SECTION COMPONENT
+//\*----------------------------------*/
+
+// Section
+//
+// Displays a styleguide section. Nested sections will be displayed as
+// subsections.
+//
+// markup:
+//  <section class="c-psg-section">
+//    <header>
+//      <h1 class="c-psg-section__heading c-psg-section__heading--section">
+//        <small class="c-psg-section__section">Section 1</small>
+//        Buttons
+//      </h1>
+//    </header>
+//    <p class="c-psg-section__description c-psg-section__description--intro">
+//      Intro description for buttons.
+//    </p>
+//    <section class="c-psg-section">
+//      <header>
+//        <h2 class="c-psg-section__heading c-psg-section__heading--subsection">
+//          Button Sizes
+//        </h2>
+//      </header>
+//      <p class="c-psg-section__description">Various text about button sizes.</p>
+//    </section>
+//  </section>
+//
+// Styleguide Components.Section
+
+.c-psg-section__heading--section {
+  @include t-psg-heading-block;
+
+  > small {
+    @include t-psg-subtitle-text;
+    display: block;
+  }
+}
+
+.c-psg-section__heading--subsection {
+  @include t-psg-title-block;
+}
+
+.c-psg-section__description {
+  @include t-psg-body-block;
+}
+
+.c-psg-section__description--intro {
+  @include t-psg-intro-block;
+}
+
+.c-psg-section__markup {
+  @include t-psg-ample-spacing(margin-top);
+}
+
+.c-psg-section__parameter-compatibility {
+  @include t-psg-body-block;
+  font-weight: $psg-bold-font-weight;
+}

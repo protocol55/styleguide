@@ -1,0 +1,46 @@
+///*----------------------------------*\
+//  #PAGE
+//\*----------------------------------*/
+
+.c-psg-page__header {
+  @include t-psg-block-spacing(margin-bottom);
+}
+
+@supports(display: grid) {
+  .c-psg-page__header {
+    max-width: $psg-content-max-width;
+  }
+
+  .c-psg-page__content {
+    max-width: $psg-content-max-width;
+  }
+
+  @media #{$psg-medium-breakpoint} {
+    .c-psg-page {
+      &::before {
+        content: "";
+        grid-area: blank;
+      }
+
+      display: grid;
+      grid-template-columns: 300px 1fr 1fr;
+      grid-template-areas:
+        "blank header header"
+        "sidenav content content";
+    }
+
+    .c-psg-page__header {
+      margin-bottom: $psg-spacing-5;
+      grid-area: header;
+    }
+
+    .c-psg-page__content {
+      grid-area: content;
+      padding-bottom: $psg-spacing-4;
+    }
+
+    .c-psg-page__sidenav {
+      grid-area: sidenav;
+    }
+  }
+}

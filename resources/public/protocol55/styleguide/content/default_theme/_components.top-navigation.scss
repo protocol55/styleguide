@@ -1,0 +1,62 @@
+///*----------------------------------*\
+//  #TOP NAVIGATION
+//\*----------------------------------*/
+
+// Top Navigation
+//
+// A horizontal navigation displaying the primary sections of the styleguide.
+//
+// markup:
+//  <nav class="c-psg-top-navigation">
+//    <ul class="c-psg-top-navigation__links">
+//      <li class="c-psg-top-navigation__link-item">
+//        <a class="c-psg-top-navigation__link" href="">Settings <small>1.0</small></a>
+//      </li>
+//      <li class="c-psg-top-navigation__link-item">
+//        <a class="c-psg-top-navigation__link" href="">Tools <small>2.0</small></a>
+//      </li>
+//      <li class="c-psg-top-navigation__link-item">
+//        <a class="c-psg-top-navigation__link" href="">Components <small>3.0</small></a>
+//      </li>
+//    </ul>
+//  </nav>
+//
+// Styleguide Components.Top_Navigation
+
+.c-psg-top-navigation__links {
+  list-style: none;
+  padding: 0;
+}
+
+.c-psg-top-navigation__link-item {
+  @include t-psg-comfy-spacing(margin-right);
+  text-align: right;
+  display: inline-block;
+
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+.c-psg-top-navigation__link {
+  @include t-psg-subtitle-text;
+  text-decoration: none;
+
+  > small {
+    @include t-psg-prevent-empty;
+
+    display: block;
+    font-size: .85em;
+    font-weight: $psg-book-font-weight;
+  }
+}
+
+@supports(display: flex) {
+  @media #{$psg-small-breakpoint} {
+    .c-psg-top-navigation__links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  }
+}

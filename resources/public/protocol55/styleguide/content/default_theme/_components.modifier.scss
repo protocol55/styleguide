@@ -1,0 +1,39 @@
+///*----------------------------------*\
+//  #MODIFIER
+//\*----------------------------------*/
+
+// Modifier
+//
+// Displays the name, description and generated output for a KSS documentation
+// modifier.
+//
+// markup:
+//  <div class="c-psg-modifier">
+//    <div class="c-psg-modifier__name">
+//      .c-button--small-size
+//      <p class="c-psg-modifier__description">
+//        - small button
+//      </p>
+//    </div>
+//    <output class="c-psg-modifier__output">
+//      <button>Small button (not really)</button>
+//    </output>
+//  </div>
+//
+// Styleguide Components.Modifier
+
+.c-psg-modifier__name {
+  @include t-psg-body-text;
+  font-weight: $psg-bold-font-weight;
+}
+
+.c-psg-modifier__description {
+  margin: 0;
+  display: inline-block;
+  font-weight: $psg-book-font-weight;
+}
+
+.c-psg-modifier__output {
+  @include t-psg-block-margin-y;
+  display: block;
+}

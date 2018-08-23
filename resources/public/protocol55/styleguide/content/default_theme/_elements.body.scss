@@ -1,0 +1,23 @@
+///*----------------------------------*\
+//  #BODY ELEMENT
+//\*----------------------------------*/
+
+body {
+  margin-top: 18px;
+  margin-bottom: 18px;
+
+  @include t-psg-lock(
+    10px,
+    32px,
+    $psg-phone-breakpoint-width,
+    $psg-small-breakpoint-width,
+    margin-left
+  );
+  @include t-psg-lock(
+    10px,
+    32px,
+    $psg-phone-breakpoint-width,
+    $psg-small-breakpoint-width,
+    margin-right
+  );
+}

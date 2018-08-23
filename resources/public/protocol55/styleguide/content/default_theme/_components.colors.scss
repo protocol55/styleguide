@@ -1,0 +1,121 @@
+///*----------------------------------*\
+//  #COLORS COMPONENT
+//\*----------------------------------*/
+
+// Colors
+//
+// Displays the documented colors as a grid of swatches.
+//
+// On mobile and browsers that don't support grid the swatches are stacked full
+// width.
+//
+// markup:
+//  <dl class="c-psg-colors">
+//    <div>
+//      <dt class="c-psg-colors__swatch" style="background: green"></dt>
+//      <dd class="c-psg-colors__name">Success</dd>
+//      <dd class="c-psg-colors__color">green</dd>
+//      <dd class="c-psg-colors__description">Used for successful feedback.</dd>
+//    </div>
+//    <div>
+//      <dt class="c-psg-colors__swatch" style="background: orange"></dt>
+//      <dd class="c-psg-colors__name">Warning</dd>
+//      <dd class="c-psg-colors__color">orange</dd>
+//      <dd class="c-psg-colors__description">Used for warnings and alerts.</dd>
+//    </div>
+//    <div>
+//      <dt class="c-psg-colors__swatch" style="background: red"></dt>
+//      <dd class="c-psg-colors__name">Danger</dd>
+//      <dd class="c-psg-colors__color">red</dd>
+//      <dd class="c-psg-colors__description">Used for errors and urgent alerts.</dd>
+//    </div>
+//  </dl>
+//
+// Styleguide Components.Colors
+
+.c-psg-colors {
+  @include t-psg-prevent-empty;
+  @include t-psg-ample-spacing(margin-top);
+  @include t-psg-block-spacing(margin-bottom);
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.c-psg-colors__name,
+.c-psg-colors__color,
+.c-psg-colors__description {
+  @include t-psg-prevent-empty;
+  @include t-psg-body-text;
+  margin: 0;
+}
+
+.c-psg-colors__name {
+  @include t-psg-single-line;
+  font-weight: bold;
+}
+
+.c-psg-colors__swatch {
+  border-radius: 3px;
+  margin-bottom: 11px;
+  border: 1px solid transparent;
+  @include t-psg-lock(
+    70px,
+    128px,
+    $psg-phone-breakpoint-width,
+    $psg-small-breakpoint-width,
+    height
+  );
+}
+
+// Bordered Swatch
+//
+// For light colors, such as backgrounds, a `--bordered` modifier can
+// be conditionally added to a swatch element to help distinguish it from the
+// page background.
+//
+// .c-psg-colors__swatch--bordered - border for demarking light swatches
+//
+// markup:
+//  <dl class="c-psg-colors">
+//    <div>
+//      <dt class="c-psg-colors__swatch {{modifier_class}}" style="background: whitesmoke"></dt>
+//      <dd class="c-psg-colors__name">Secondary Background</dd>
+//      <dd class="c-psg-colors__color">whitesmoke</dd>
+//      <dd class="c-psg-colors__description">A secondary background used behind
+//      menu items.</dd>
+//    </div>
+//  </dl>
+//
+// Styleguide Components.Colors.Bordered_Swatch
+
+.c-psg-colors__swatch--bordered {
+  border-color: $psg-border-color;
+}
+
+.c-psg-colors__description {
+  border-top: 1px dashed $psg-border-color;
+  margin-top: 1em;
+  padding-top: 1em;
+  margin-bottom: $psg-spacing-2;
+}
+
+@media #{$psg-small-breakpoint} {
+  @supports(display: grid) {
+    .c-psg-colors {
+      @include t-psg-lock(
+        10px,
+        40px,
+        $psg-phone-breakpoint-width,
+        $psg-small-breakpoint-width,
+        grid-gap
+      );
+
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    }
+
+    .c-psg-colors__description {
+      margin-bottom: 0;
+    }
+  }
+}

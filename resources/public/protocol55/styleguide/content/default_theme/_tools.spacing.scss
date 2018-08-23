@@ -1,0 +1,126 @@
+///*----------------------------------*\
+//  #SPACING TOOLS
+//\*----------------------------------*/
+
+// Spacing
+//
+// Mixins for adding margin and padding. These are responsive and depend on
+// _tools.responsive.scss.
+//
+// Styleguide Tools.Spacing
+
+// t-psg-block-spacing($prop)
+//
+// Adds "block" spacing, which is about the amount you'd expect around
+// paragraphs and lists. This is used quite widely through the theme to give a
+// consistent vertical rhythm.
+//
+// $prop - the property to apply the spacing to. Ex: margin-top
+//
+// weight: 1
+//
+// Compatible in all browsers.
+//
+// Styleguide Tools.Spacing.Block_Spacing
+
+@mixin t-psg-block-spacing($prop) {
+  @include t-psg-lock(
+    $psg-spacing-3,
+    $psg-spacing-4,
+    $psg-phone-breakpoint-width,
+    $psg-small-breakpoint-width,
+    $prop
+  );
+}
+
+// t-psg-block-margin-y()
+//
+// Applies block spacing to the top and bottom margins.
+//
+// weight: 1.1
+//
+// Compatible in all browsers.
+//
+// Styleguide Tools.Spacing.Block_Margin_Y
+
+@mixin t-psg-block-margin-y {
+  @include t-psg-block-spacing(margin-top);
+  @include t-psg-block-spacing(margin-bottom);
+}
+
+// t-psg-padding-y()
+//
+// Applies block spacing to the top and bottom padding.
+//
+// weight: 1.2
+//
+// Compatible in all browsers.
+//
+// Styleguide Tools.Spacing.Block_Padding_Y
+
+@mixin t-psg-block-padding-y {
+  @include t-psg-block-spacing(padding-bottom);
+  @include t-psg-block-spacing(padding-bottom);
+}
+
+// t-psg-comfy-spacing($prop)
+//
+// Applies "comfy" spacing, which is about the spacing you'd expect around a
+// button.
+//
+// $prop - the property to apply the spacing to. Ex: margin-top
+//
+// weight: 1.3
+//
+// Compatible in all browsers.
+//
+// Styleguide Tools.Spacing.Comfy_Spacing
+
+@mixin t-psg-comfy-spacing($prop) {
+  @include t-psg-lock(
+    $psg-spacing-2,
+    $psg-spacing-3,
+    $psg-phone-breakpoint-width,
+    $psg-small-breakpoint-width,
+    $prop
+  );
+}
+
+// t-psg-comfy-padding()
+//
+// Applies comfy spacing to the top, right, bottom and left padding.
+//
+// weight: 1.4
+//
+// Compatible in all browsers.
+//
+// Styleguide Tools.Spacing.Comfy_Padding
+
+@mixin t-psg-comfy-padding {
+  @include t-psg-comfy-spacing($prop: padding-top);
+  @include t-psg-comfy-spacing($prop: padding-right);
+  @include t-psg-comfy-spacing($prop: padding-bottom);
+  @include t-psg-comfy-spacing($prop: padding-left);
+}
+
+// t-psg-ample-spacing($prop)
+//
+// Applies "ample" spacing, which the largest spacing in the app.
+//
+// $prop - the property to apply the spacing to. Ex: margin-top
+//
+// weight: 1.5
+//
+// Compatible in all browsers.
+//
+// Styleguide Tools.Spacing.Ample_Spacing
+
+@mixin t-psg-ample-spacing($prop) {
+  @include t-psg-lock(
+    $psg-spacing-4,
+    $psg-spacing-5,
+    $psg-phone-breakpoint-width,
+    $psg-small-breakpoint-width,
+    $prop
+  );
+}

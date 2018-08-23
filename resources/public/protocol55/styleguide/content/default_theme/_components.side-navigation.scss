@@ -1,0 +1,97 @@
+///*----------------------------------*\
+//  #SIDE NAVIGATION
+//\*----------------------------------*/
+
+// Side Navigation
+//
+// A vertical navigation that display subsections. At mobile sizes it will
+// prepend a "Navigation" heading.
+//
+// markup:
+//  <nav class="c-psg-side-navigation">
+//    <ul class="c-psg-side-navigation__links">
+//      <li class="c-psg-side-navigation__link-item">
+//        <a class="c-psg-side-navigation__link" href="">Buttons</a>
+//      </li>
+//      <li class="c-psg-side-navigation__link-item">
+//        <a class="c-psg-side-navigation__link" href="">Menus</a>
+//      </li>
+//      <li class="c-psg-side-navigation__link-item">
+//        <a class="c-psg-side-navigation__link" href="">Tooltips</a>
+//      </li>
+//    </ul>
+//  </nav>
+//
+// Styleguide Components.Side_Navigation
+
+.c-psg-side-navigation__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  @include t-psg-block-margin-y;
+
+  &::before {
+    content: "Navigation";
+    font-family: $psg-font-family;
+    font-size: $psg-body-font-size;
+    font-weight: $psg-bold-font-weight;
+    margin-bottom: 1em;
+    padding-bottom: .75em;
+    border-bottom: 1px solid $psg-border-color;
+    display: block;
+  }
+
+  @supports(display: grid) {
+    @media #{$psg-medium-breakpoint} {
+      margin-top: 1em;
+      padding-right: $psg-spacing-4;
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+}
+
+.c-psg-side-navigation__link-item {
+  margin-bottom: $psg-spacing-1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @supports(display: grid) {
+    @media #{$psg-medium-breakpoint} {
+      padding-left: $psg-spacing-3;
+      margin-bottom: $psg-spacing-2;
+    }
+  }
+}
+
+.c-psg-side-navigation__link {
+  color: black;
+  font-size: $psg-body-font-size;
+  position: relative;
+  font-family: $psg-font-family;
+
+  @supports(display: grid) {
+    @media #{$psg-medium-breakpoint} {
+      text-decoration: none;
+    }
+  }
+}
+
+.c-psg-side-navigation__link--active {
+  position: relative;
+
+  &::before {
+    content: "";
+    width: 9px;
+    height: 9px;
+    background-color: black;
+    position: absolute;
+    left: -21px;
+    top: 5px;
+    display: block;
+    border-radius: 50%;
+  }
+}

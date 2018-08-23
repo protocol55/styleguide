@@ -1,0 +1,39 @@
+///*----------------------------------*\
+//  #BORDER TOOLS
+//\*----------------------------------*/
+
+// Borders
+//
+// Mixins for specifying rules and borders.
+//
+// Styleguide Tools.Borders
+
+// t-psg-rule()
+//
+// Draws a 1px bottom rule under the element.
+//
+// Compatible in all browsers.
+//
+// Styleguide Tools.Borders.Rule
+
+@mixin t-psg-rule {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px solid $psg-border-color;
+}
+
+// t-psg-headings-rule()
+//
+// Same as t-psg-rule, but adds a padding between the content and the rule.
+//
+// weight: 2
+//
+// Compatible in all browsers.
+//
+// Styleguide Tools.Borders.Headings_Rule
+
+@mixin t-psg-heading-rule {
+  @include t-psg-rule;
+  padding-bottom: .3em;
+}

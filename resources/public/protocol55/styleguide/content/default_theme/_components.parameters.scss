@@ -1,0 +1,139 @@
+///*----------------------------------*\
+//  #PARAMETERS COMPONENT
+//\*----------------------------------*/
+
+// Parameters
+//
+// Displays KSS documentation parameters. At desktop sizes they will be
+// displayed as a table, while on browsers not supporting grid and mobile sizes
+// they will be stacked blocks.
+//
+// markup:
+//  <div class="c-psg-params">
+//    <div class="c-psg-params__cell c-psg-params__cell--column c-psg-params__cell--name">
+//      Parameter
+//    </div>
+//    <div class="c-psg-params__cell c-psg-params__cell--column c-psg-params__cell--default">
+//      Default
+//    </div>
+//    <div class="c-psg-params__cell c-psg-params__cell--column c-psg-params__cell--description">
+//      Description
+//    </div>
+//    <div class="c-psg-params__cell c-psg-params__cell--name">
+//      $start
+//    </div>
+//    <div class="c-psg-params__cell c-psg-params__cell--default">
+//      0
+//    </div>
+//    <div class="c-psg-params__cell c-psg-params__cell--description">
+//      The start point.
+//    </div>
+//    <div class="c-psg-params__cell c-psg-params__cell--name">
+//      $end
+//    </div>
+//    <div class="c-psg-params__cell c-psg-params__cell--default">
+//      100
+//    </div>
+//    <div class="c-psg-params__cell c-psg-params__cell--description">
+//      The end point.
+//    </div>
+//  </div>
+//
+// Styleguide Components.Parameters
+
+$psg-parameters-mobile-padding: 5px;
+
+.c-psg-params {
+  @include t-psg-ample-spacing(margin-top);
+}
+
+.c-psg-params__cell {
+  @include t-psg-body-text;
+  border: 1px solid $psg-border-color;
+  padding: 5px;
+
+  &:empty {
+    display: none;
+  }
+
+  &::before {
+    @include t-psg-subtitle-text;
+    margin-right: $psg-spacing-1;
+    display: block;
+    border-bottom: 1px solid $psg-border-color;
+    margin-left: -$psg-parameters-mobile-padding;
+    margin-right: -$psg-parameters-mobile-padding;
+    margin-bottom: $psg-parameters-mobile-padding;
+    padding: 0 $psg-parameters-mobile-padding;
+    padding-bottom: $psg-parameters-mobile-padding;
+  }
+}
+
+.c-psg-params__cell--column {
+  display: none;
+}
+
+.c-psg-params__cell--default,
+.c-psg-params__cell--description {
+  border-top: 0;
+}
+
+.c-psg-params__cell--name {
+  @include t-psg-comfy-spacing(margin-top);
+
+  &::before {
+    content: "Name";
+  }
+}
+
+.c-psg-params__cell--default {
+  &::before {
+    content: "Default";
+  }
+}
+
+.c-psg-params__cell--description {
+  &::before {
+    content: "Description";
+  }
+}
+
+@media #{$psg-small-breakpoint} {
+  @supports(display: grid) {
+    .c-psg-params {
+      display: grid;
+      grid-gap: 0;
+      grid-template-columns: 1fr 1fr 2fr;
+    }
+
+    .c-psg-params__cell {
+      border-width: 0 0 1px 0;
+      margin: 0;
+      padding: 1em;
+      display: flex;
+      align-items: center;
+
+      &:empty {
+        display: block;
+      }
+
+      &::before {
+        display: none;
+      }
+    }
+
+    .c-psg-params__cell--column {
+      @include t-psg-subtitle-text($font-size: 12px);
+      padding: .5em 1em;
+    }
+
+    .c-psg-params__cell--name {
+      margin-top: 0;
+      padding-left: 0;
+    }
+
+    .c-psg-params__cell--description {
+      padding-right: 0;
+    }
+  }
+}

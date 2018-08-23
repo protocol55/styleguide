@@ -1,0 +1,40 @@
+///*----------------------------------*\
+//  #RESPONSIVE TOOLS
+//\*----------------------------------*/
+
+// Responsive
+//
+// Mixins for responsive sizing.
+//
+// Styleguide Tools.Responsive
+
+
+// t-psg-lock($y1, $y2, $x1, $x2, $prop)
+//
+// A mixin for creating a css lock. See here for details:
+// https://fvsch.com/css-locks/
+// 
+// $y1   - small property value
+// $y2   - large property value
+// $x1   - small breakpoint
+// $x2   - large breakpoint
+// $prop - the property to lock
+//
+// Compatible in all browsers supporting media queries.
+//
+// Styleguide Tools.Responsive.Lock
+
+@mixin t-psg-lock($y1, $y2, $x1, $x2, $prop) {
+  $m: ($y2 - $y1) / ($x2 - $x1);
+  $b: $y1 - $m * $x1;
+
+  #{$prop}: #{$y1};
+
+  @media (min-width: #{$x1}) {
+    #{$prop}: calc(#{$m * 100vw} + #{$b});
+  }
+
+  @media (min-width: #{$x2}) {
+    #{$prop}: #{$y2};
+  }
+}

@@ -12,11 +12,11 @@ for generating Style Guides from [KSS documented](https://warpspire.com/kss/synt
 
 ### deps.edn
 
-`org.clojars.protocol55/styleguide {:mvn/version "0.1.0"}`
+`org.clojars.protocol55/styleguide {:mvn/version "0.1.1"}`
 
 ### Leiningen
 
-`[org.clojars.protocol55/styleguide "0.1.0"]`
+`[org.clojars.protocol55/styleguide "0.1.1"]`
 
 ## Usage
 
@@ -152,7 +152,7 @@ example/
 `deps.edn`
 
 ```edn
-{:deps {org.clojars.protocol55/styleguide {:mvn/version "0.1.0"}}
+{:deps {org.clojars.protocol55/styleguide {:mvn/version "0.1.1"}}
  :paths ["resources" "target"]}
 ```
 

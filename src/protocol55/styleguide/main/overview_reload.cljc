@@ -34,25 +34,27 @@
     (format "protocol55.styleguide.main.overview_reload.reload_overview_html_remote(%s);"
             (-> html pr-str))))
 
-(defn start* [{:keys [overview] :as config}]
-  (let [overview-file (.getAbsoluteFile (io/file overview))
-        overview-dir (.getParent overview-file)]
-    (fww/add-watch!
-      [::watcher ::overview]
-      {:paths [overview-dir]
-       :filter (fww/suffix-filter #{"md"})
-       :handler (fww/throttle
-                  50
-                  (bound-fn [evts]
-                    (when-some [files (not-empty (mapv :file evts))]
-                      (reload-overview (get-html overview-file)))))})))
+(defn start* [{:keys [overview build-dir] :as config}]
+  (when overview
+    (when-not build-dir
+      (let [overview-file (.getAbsoluteFile (io/file overview))
+            overview-dir (.getParent overview-file)]
+        (fww/add-watch!
+          [::watcher ::overview]
+          {:paths [overview-dir]
+           :filter (fww/suffix-filter #{"md"})
+           :handler (fww/throttle
+                      50
+                      (bound-fn [evts]
+                        (when-some [files (not-empty (mapv :file evts))]
+                          (reload-overview (get-html overview-file)))))})))))
+
+(ring-server/reg-reloader start*)
 
 (defmacro start
   "Starts the figwheel watcher to live-reload the overview. Disabled when the build-dir is present."
   []
-  (when (:overview *config*)
-    (when-not (:build-dir *config*)
-      (start* *config*) nil)))
+  (start* *config*) nil)
 
 (defmacro inject-overview-html
   "If build-dir option is present this inlines the overview. Otherwise, does a request for it."
@@ -73,10 +75,6 @@
 
 (defn ^:export reload-overview-html-remote [overview-html]
   (set-overview-html! overview-html))
-
-;; Note to self: If this ever stops working it's because the :analysis-cache cljs
-;; compiler option is true and this file is not being re-compiled.
-(start)
 
 (inject-overview-html)
 

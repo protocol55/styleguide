@@ -4,6 +4,19 @@
             [protocol55.styleguide.main.config :refer [*config*]]
             [protocol55.styleguide.main.stylesheets :as stylesheets]))
 
+(def reloaders (atom nil))
+
+(defn reg-reloader
+  "Registers reloader function f, which should take as its only argument the
+  config map for the style guide."
+  [f]
+  (swap! reloaders conj f))
+
+(defn start-reloaders!
+  "Starts all registered reloaders passing them the style guide config."
+  []
+  (doseq [start* @reloaders] (start* *config*)))
+
 (defmulti styleguide-handler
   (fn [{:keys [root] :as config} {:keys [uri] :as request}]
     (if (= root "/")
@@ -25,6 +38,7 @@
   ([handler]
    (styleguide-middleware handler *config*))
   ([handler {:keys [root css theme-css] :as config}]
+   (start-reloaders!)
    (fn [{:keys [uri] :as request}]
      (cond
        (not (clojure.string/starts-with? uri root))
